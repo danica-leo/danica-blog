@@ -1,1 +1,6 @@
-/dist/bundle.js
+# Ignore everything in 'dist'
+/dist/*
+# Except for 'index.html'
+/dist/index.html
+
+/node_modules/
