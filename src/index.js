@@ -1,16 +1,19 @@
-import join from 'lodash/join'
-import printMe from './print.js'
-function component () {
-  const element = document.createElement('div')
-  const btn = document.createElement('button')
+import { join } from 'lodash-es'
 
-  element.innerHTML = join(['Hello', 'webpack'], ' ')
+console.info("index", join)
 
-  btn.innerHTML = 'Click me and check the console!'
-  btn.onclick = printMe
+// import printMe from './print.js'
+// function component () {
+//   const element = document.createElement('div')
+//   const btn = document.createElement('button')
 
-  element.appendChild(btn)
-  return element
-}
+//   element.innerHTML = join(['Hello', 'webpack'], ' ')
 
-document.body.appendChild(component())
+//   btn.innerHTML = 'Click me and check the console!'
+//   btn.onclick = printMe
+
+//   element.appendChild(btn)
+//   return element
+// }
+
+// document.body.appendChild(component())
