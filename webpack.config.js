@@ -4,16 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: "none",
   entry: {
-    sharedIndex: 'lodash-es/join',
-    sharedAnother: 'lodash/join',
-    index: {
-      import: './src/index.js',
-      dependOn: 'sharedIndex'
-    },
-    another: {
-      import: './src/another-module.js',
-      dependOn: 'sharedAnother'
-    },
+    index: './src/index.js',
   },
   // devtool: 'inline-source-map',
   devServer: {
@@ -28,11 +19,5 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true
-  },
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'all'
-    }
   }
 }

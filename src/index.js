@@ -1,19 +1,31 @@
-import { join } from 'lodash-es'
+function getComponent () {
+  return import(
+    /* webpackChunkName: "my-chunk-name" */
+    'lodash-es/join'
+  ).then(
+    ({ default: join }) => {
+      const element = document.createElement('div')
+      element.innerHTML = join(['Hello', 'webpack'], ' ')
+      return element
+    }
+  ).catch((error) => "An error occurred while loading the component")
+}
 
-console.info("index", join)
+getComponent().then((component) => {
+  document.body.appendChild(component)
+})
 
-import printMe from './print.js'
-function component () {
+async function getComponentAsync () {
   const element = document.createElement('div')
-  const btn = document.createElement('button')
-
-  element.innerHTML = join(['Hello', 'webpack'], ' ')
-
-  btn.innerHTML = 'Click me and check the console!'
-  btn.onclick = printMe
-
-  element.appendChild(btn)
+  try {
+    const { default: join } = await import('lodash-es/join')
+    element.innerHTML = join(['Hello', 'webpack'], ' ')
+  } catch (e) {
+    return "An error occurred while loading the component"
+  }
   return element
 }
 
-document.body.appendChild(component())
+getComponentAsync().then((component) => {
+  document.body.appendChild(component)
+})
