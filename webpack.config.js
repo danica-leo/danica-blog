@@ -15,9 +15,6 @@ module.exports = {
       dependOn: 'sharedAnother'
     },
   },
-  optimization: {
-    runtimeChunk: 'single',
-  },
   // devtool: 'inline-source-map',
   devServer: {
     static: './dist'
@@ -32,4 +29,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true
   },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
 }
